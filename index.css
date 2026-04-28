@@ -1,0 +1,334 @@
+@import "tailwindcss";
+
+#root1 {
+  background-color: black;
+  color: chartreuse;
+  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  max-width: fit-content;
+  width: 100%;
+  margin: 0 auto;
+}
+/*
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100% !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.header-component {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  padding: 0.5rem;
+  height: 3rem;
+  align-items: center;
+}
+
+.title-img {
+  display: flex;
+  max-width: 10rem;
+  width: 100%;
+  height: auto;
+}
+
+li,
+.Link {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  min-width: 4rem;
+}
+li:hover,
+.Link {
+  color: #ffa700;
+}
+
+.navitem-list {
+  display: flex;
+  padding-inline-start: 0;
+  padding: 0 1rem;
+}
+.navitem-list li {
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+
+.button-component {
+  min-width: 5rem;
+  display: flex;
+  justify-content: center;
+  color: #ffa700;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 1px solid rgb(255, 140, 0);
+  border-radius: 0.5rem;
+  background: none;
+}
+.button-component:hover {
+  color: white;
+  background-color: #ffa700;
+}
+
+.body-container,
+.about-page,
+.contact-page,
+.restaurant-details-page,
+.profile-pages {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  overflow: auto;
+}
+
+.search-bar-container {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  max-height: 1rem;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  max-width: fit-content;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.search-bar {
+  border: none;
+  height: 100%;
+  max-height: 1rem;
+  outline: none;
+}
+
+.search-icon,
+.reset-icon {
+  max-height: 1.5rem;
+  height: 100%;
+  cursor: pointer;
+  background: none;
+}
+.search-button,
+.reset-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+}
+
+.restaurants-length,
+.loading-text {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.restaurant-card-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 14rem;
+  height: auto;
+  padding: 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  overflow: hidden;
+  text-decoration: none;
+}
+.restaurant-image {
+  max-width: 14rem;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+}
+.rating-time {
+  display: flex;
+  align-items: center;
+}
+.rating-time svg {
+  padding-right: 0.2rem;
+}
+
+.restaurants {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.restaurant-details {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+.restaurant-details-image {
+  max-width: 30rem;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: contain;
+}
+.restaurant-item-container {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+.menu-list {
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+.restaurant-item-image {
+  width: 7rem;
+  height: auto;
+  border-radius: 1rem;
+  margin-right: 1rem;
+}
+
+.shimmer-card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.shimmer-card {
+  border: none;
+  background-color: rgb(161, 160, 160);
+  max-width: 14rem;
+  width: 100%;
+  height: 15rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100% !important;
+}
+
+.error-oops {
+  font-size: 2rem;
+  color: red;
+}
+.error-status {
+  font-size: 5rem;
+  color: red;
+}
+.error-data {
+  font-size: 2rem;
+  color: rgb(76, 0, 255);
+}
+.error-back-to-home {
+  font-size: 2rem;
+  color: rgb(255, 140, 0);
+  cursor: pointer;
+  padding: 1rem;
+  border: 1px solid rgb(255, 140, 0);
+  border-radius: 1rem;
+  background: none;
+}
+
+.about-page,
+.contact-page,
+.profile-pages {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pages {
+  max-width: 30rem;
+  width: 100%;
+  height: auto;
+}
+.profile-pages:hover {
+  cursor: pointer;
+  box-shadow: 10px 10px 5px rgb(89, 119, 238, 0.7);
+}
+.profile-pages .function-heading {
+  color: rgb(239, 217, 20);
+  font-size: 1.5rem;
+  margin: 0.2rem;
+  font-weight: 600;
+}
+.profile-pages .class-heading {
+  color: forestgreen;
+  font-size: 1.5rem;
+  margin: 0.2rem;
+  font-weight: 600;
+}
+.profile-components {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.github-data-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.github-data-block .git-avatar {
+  width: 5rem;
+  height: auto;
+  border-radius: 50%;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  padding: 0.5rem;
+  height: 3rem;
+  align-items: center;
+  text-align: center;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.signin-heading {
+  color: #ffa700;
+}
+.formik-form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid orange;
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 20rem;
+  width: 100%;
+}
+.formik-form input {
+  min-width: 8rem;
+  color: #ffa700;
+  padding: 0.5rem;
+  border: 1px solid rgb(255, 140, 0);
+  border-radius: 0.5rem;
+  background: none;
+  outline: none;
+}
+.formik-form label {
+  margin-top: 1rem;
+  color: orange;
+}
+.form-error-tag {
+  margin: 0 0.1rem;
+  color: red;
+} 
+*/
