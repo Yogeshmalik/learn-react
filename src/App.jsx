@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App max-w-7xl w-full mx-auto flex flex-col justify-between overflow-auto">
+    <div className="App relative box-border mt-24 w-full h-scree mx-auto flex flex-col justify-between overflow-auto">
       <AuthLayout>
         <Header />
         <Outlet />

@@ -24,8 +24,8 @@ const Body = () => {
   };
 
   return (
-    <div className="body-container flex flex-col border p-2 my-2 overflow-auto">
-      <div className="search-bar-container flex max-h-8 rounded-md max-w-fit justify-center overflow-hidden border-2 text-orange-400 border-orange-400 p-2 w-full items-center space-x-1">
+    <div className="body-container flex flex-col p-2 my-2 overflow-auto max-w-7xl mx-auto">
+      <div className="search-bar-container flex max-h-8 rounded-md max-w-fit justify-center overflow-hidden border border-black p-2 w-full items-center space-x-1">
         <input
           className="search-bar outline-0"
           type="text"
@@ -70,7 +70,7 @@ const Body = () => {
       {allRestaurants?.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="restaurants flex flex-wrap gap-1 w-full">
+        <div className="restaurants flex flex-wrap gap-4 mx-auto w-full justify-between">
           <>
             {filteredRestaurants?.map((restaurant) => {
               return (
@@ -78,7 +78,7 @@ const Body = () => {
                   key={restaurant?.info?.id}
                   to={`/restaurant-details/${restaurant?.info?.id}`}
                   state={{ restaurant: restaurant?.info }}
-                  className="restaurant-card-link  flex flex-col justify-between max-w-60 w-full p-2" 
+                  className="restaurant-card-link flex flex-col justify-between max-w-40 md:max-w-70 w-full" 
                 >
                   <RestaurantCard {...restaurant?.info} />
                 </Link>

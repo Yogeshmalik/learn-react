@@ -9,11 +9,11 @@ const RestaurantCard = ({
   cloudinaryImageId,
 }) => {
   return (
-    <div className="restaurant-card hover:scale-95 transition-all duration-300 ease-in-out">
+    <div className="restaurant-card hover:scale-95 transition-all duration-300 ease-in-out w-full">
       <img
         src={IMG_CDN_URL + cloudinaryImageId}
         alt="Restaurant Image"
-        className="restaurant-image max-w-60 w-full object-cover h-36 rounded-xl drop-shadow-xl/25"
+        className="restaurant-image max-w-70 w-full object-cover h-48 rounded-xl drop-shadow-xl/25"
       />
       <div className="flex flex-col p-2">
         <h3 className="font-bold text-lg">
