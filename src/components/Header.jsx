@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TitleImg } from "../constants";
 import { Link } from "react-router";
 import Button from "./Button";
+import useOnline from "../hooks/useOnline";
 
 const Title = () => {
   return (
@@ -62,6 +63,7 @@ const NavItems = () => {
 
 const LoginLogoutButtons = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const isOnline = useOnline();
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -72,13 +74,14 @@ const LoginLogoutButtons = () => {
   return (
     <div className="login-logout-buttons flex items-center">
       {isLoggedIn ? (
-        <Button
-          onClick={handleLogout}
-          label="Logout"
-          src={
-            "https://cdn-icons-png.flaticon.com/512/9653/9653907.png"
-          }
-        />
+        <>
+          <Button
+            onClick={handleLogout}
+            label="Logout"
+            src={"https://cdn-icons-png.flaticon.com/512/9653/9653907.png"}
+          />
+          <span className="ml-1 text-2xl">{isOnline ? "🟢" : "🔴"}</span>
+        </>
       ) : (
         <Button
           onClick={() => {
@@ -93,7 +96,7 @@ const LoginLogoutButtons = () => {
 
 const Header = () => {
   return (
-    <div className="header-component p-2 bg-white h-16 md:h-20 w-full shadow-lg z-10 items-center fixed top-0 right-0 left-0 mb-2 overflow-hidden">
+    <div className="header-component p-2 rounded-b-4xl opacity-95 bg-gray-100 h-16 md:h-20 w-full shadow-lg z-50 items-center fixed top-0 right-0 left-0 mb-2 overflow-hidden">
       <span className="max-w-7xl w-full flex justify-between h-full items-center mx-auto">
         <Title />
         <NavItems />

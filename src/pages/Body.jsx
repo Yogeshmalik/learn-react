@@ -1,18 +1,19 @@
-import RestaurantCard from "../components/RestaurantCard";
+import RestaurantCard, { withVegLabel } from "../components/RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "../components/Shimmer";
 import { Link, NavLink, useParams } from "react-router";
 import { RESTAURANT_LIST_URL } from "../constants";
 import { filterInfo } from "../utils/helper";
 import useRestaurants from "../hooks/useRestaurants";
+import useOnline from "../hooks/useOnline";
 
 const Body = () => {
+  const isOnline = useOnline();
   const { restaurantId } = useParams();
   const [searchInput, setSearchInput] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
-  // const [allRestaurants, setAllRestaurants] = useState([]);
-  // const [loading, setLoading] = useState(false);
   const { allRestaurants, loading, setLoading } = useRestaurants();
+  const RestaurantCardVeg = withVegLabel(RestaurantCard);
 
   useEffect(() => {
     setFilteredRestaurants(allRestaurants);
@@ -70,7 +71,7 @@ const Body = () => {
       {allRestaurants?.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="restaurants flex flex-wrap gap-4 mx-auto w-full justify-between">
+        <div className="restaurants flex flex-wrap gap-4 mx-auto w-fit md:justify-evenly xl:justify-between">
           <>
             {filteredRestaurants?.map((restaurant) => {
               return (
@@ -78,9 +79,13 @@ const Body = () => {
                   key={restaurant?.info?.id}
                   to={`/restaurant-details/${restaurant?.info?.id}`}
                   state={{ restaurant: restaurant?.info }}
-                  className="restaurant-card-link flex flex-col justify-between max-w-40 md:max-w-70 w-full" 
+                  className="restaurant-card-link flex flex-col justify-between max-w-40 md:max-w-72 w-full"
                 >
-                  <RestaurantCard {...restaurant?.info} />
+                  {restaurant?.info?.veg ? (
+                    <RestaurantCardVeg {...restaurant?.info} />
+                  ) : (
+                    <RestaurantCard {...restaurant?.info} />
+                  )}
                 </Link>
               );
             })}

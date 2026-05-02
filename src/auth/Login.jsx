@@ -70,7 +70,7 @@ export const Login = () => (
           <Field
             id="email"
             name="email"
-            placeholder="jane@acme.com"
+            placeholder="a@b.co"
             type="email"
             autoComplete="current-email"
           />
@@ -82,7 +82,7 @@ export const Login = () => (
           <Field
             id="password"
             name="password"
-            placeholder="Enter Password"
+            placeholder="12345678"
             type="password"
             autoComplete="current-password"
           />

@@ -10,11 +10,13 @@ const RestaurantCard = ({
 }) => {
   return (
     <div className="restaurant-card hover:scale-95 transition-all duration-300 ease-in-out w-full">
-      <img
-        src={IMG_CDN_URL + cloudinaryImageId}
-        alt="Restaurant Image"
-        className="restaurant-image max-w-70 w-full object-cover h-48 rounded-xl drop-shadow-xl/25"
-      />
+      <div className="relativ">
+        <img
+          src={IMG_CDN_URL + cloudinaryImageId}
+          alt="Restaurant Image"
+          className="restaurant-image max-w-70 w-full object-cover h-48 rounded-xl drop-shadow-xl/25 "
+        />
+      </div>
       <div className="flex flex-col p-2">
         <h3 className="font-bold text-lg">
           {name.split(" ").slice(0, 3).join(" ") +
@@ -65,6 +67,19 @@ const RestaurantCard = ({
       </div>
     </div>
   );
+};
+
+export const withVegLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div className="relative">
+        <label className="px-3 p-1 absolute z-10 bottom-30 left-25 rounded-2xl font-semibold text-green-500 bg-black opacity-75">
+          Pure Veg
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
