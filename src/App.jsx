@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./pages/Body";
 import Footer from "./components/Footer";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-router";
 import About from "./pages/About";
 import ErrorPage from "./components/ErrorPage";
 import Contact from "./pages/Contact";
@@ -17,11 +17,13 @@ const App = () => {
   const [isConnecting, setIsConnecting] = useState(false);
   const isOnline = useOnline();
   const prevOnlineRef = useRef(isOnline);
+const navigate = useNavigate()
 
   useEffect(() => {
     const isAuth = localStorage.getItem("isAuth");
     if (!isAuth) {
-      window.location.href = "/auth/login";
+      // window.location.href = "/auth/login";
+      navigate("/auth/login");
     }
   }, []);
 
