@@ -1,7 +1,4 @@
-
-
 const Button = ({ label, onClick, type, src, color }) => {
-
   const colorMap = {
     orange: "text-orange-400 hover:bg-orange-400 border-orange-400",
     green: "text-green-600 hover:bg-green-600 border-green-600",
@@ -9,12 +6,12 @@ const Button = ({ label, onClick, type, src, color }) => {
     red: "text-red-400 hover:bg-red-400 border-red-400",
   };
   const selectedColor = colorMap[color] || colorMap.orange;
-  
+
   return (
     <button
       onClick={onClick}
       type={type}
-      className={`button-component md:min-w-20 w-fit h-auto rounded-md space-x-1 cursor-pointer text-orange-40 hover:text-white hover:bg-orange-40 items-center flex border-orange-40 justify-center p-1 md:p-1.5 w-ful transition-all duration-300 ease-in-out
+      className={`button-component md:min-w-20 w-fit h-auto rounded-md space-x-1 cursor-pointer text-orange-40 hover:text-white hover:bg-orange-40 items-center flex border-orange-40 justify-center p-2 md:p-1.5 w-ful transition-all duration-300 ease-in-out
         ${selectedColor}
         ${src ? "border-0 md:border" : "border"}
         `}
@@ -27,7 +24,7 @@ const Button = ({ label, onClick, type, src, color }) => {
         />
       )}
       <span className={src ? "hidden md:flex" : "flex"}>
-        {label.toUpperCase()}
+        {label && label.toUpperCase()}
       </span>
     </button>
   );

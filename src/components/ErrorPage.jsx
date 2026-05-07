@@ -1,18 +1,32 @@
 import React from "react";
 import { Link, useRouteError } from "react-router";
+import Button from "./Button";
 
 const ErrorPage = () => {
   const error = useRouteError();
   console.log("This is router error: ", error.status);
   return (
-    <div className="error-page">
-      <h1 className="error-oops">Oopss!! Something Went Wrong!!</h1>
-      <h2 className="error-status">
+    <div className="error-page min-h-screen flex flex-col m-auto justify-center items-center space-y-4 text-center">
+      <img
+        src="https://static.vecteezy.com/system/resources/thumbnails/024/800/866/small/oops-comic-blast-with-white-and-green-colors-cloud-explosion-bubbles-for-cartoons-comic-burst-with-colorful-clouds-and-smash-free-png.png"
+        alt="error img"
+        className="flex max-w-52 bg-transparent w-full h-full object-contain"
+      />
+      <h1 className="error-oops text-3xl font-semibold text-red-600 flex flex-wrap">
+        Oopss!! Something Went Wrong!!
+      </h1>
+      <h2 className="error-status text-xl font-semibold text-red-600">
         Status: Error {error.status} {error.statusText}
       </h2>
-      <h2 className="error-data">{error.data} </h2>
+      <h2 className="error-data text-xl font-semibold text-orange-600">
+        {error.data}{" "}
+      </h2>
       <Link to="/">
-        <button className="error-back-to-home">Back to home</button>
+        <Button
+          color="green"
+          label="Back to home"
+          className="error-back-to-home"
+        />
       </Link>
     </div>
   );
