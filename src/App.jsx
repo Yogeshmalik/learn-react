@@ -28,9 +28,14 @@ const App = () => {
   const hideLayout = location.pathname === "/auth/login";
 
   useEffect(() => {
+    if (window.location.pathname === "/index.html") {
+      window.history.replaceState(null, "", "/");
+    }
+  }, []);
+
+  useEffect(() => {
     const isAuth = localStorage.getItem("isAuth");
     if (!isAuth) {
-      // window.location.href = "/auth/login";
       navigate("/auth/login");
     }
   }, []);
@@ -96,11 +101,11 @@ export const appRouter = createBrowserRouter([
         path: "restaurant-details/:restaurantId",
         element: <RestaurantPage />,
       },
-      {
-        path: "auth/login",
-        element: <Login />,
-      },
     ],
+  },
+  {
+    path: "auth/login",
+    element: <Login />,
   },
 ]);
 

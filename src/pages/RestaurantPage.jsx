@@ -20,6 +20,14 @@ const RestaurantPage = () => {
   const location = useLocation();
   const restaurantData = location?.state?.restaurant;
 
+  if (!restaurantData) {
+    return (
+      <h1 className="flex text-2xl font-semibold text-violet-500">
+        Loading or Invalid Access
+      </h1>
+    );
+  }
+
   const restaurantCategoryInfo = restaurantDetail?.filter(
     (c) =>
       c?.card?.card?.["@type"] ===
