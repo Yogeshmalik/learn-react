@@ -19,8 +19,10 @@ const RestaurantCard = ({
       </div>
       <div className="flex flex-col p-2">
         <h3 className="font-bold text-lg">
-          {name.split(" ").slice(0, 3).join(" ") +
-            (name.split(" ").length > 3 ? "..." : "")}
+          {name
+            ? name.split(" ").slice(0, 3).join(" ") +
+              (name.split(" ").length > 3 ? "..." : "")
+            : "Unknown"}
         </h3>
         <div className="rating-time flex space-x-1 align-middle items-center">
           <svg

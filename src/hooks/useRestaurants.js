@@ -13,11 +13,16 @@ const useRestaurant = () => {
     setLoading(true);
     const fetchData = await fetch(RESTAURANT_LIST_URL);
     const dataJson = await fetchData.json();
-    const restaurantsData =
-      dataJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    console.log("restaurantsData", restaurantsData);
-    // setFilteredRestaurants(restaurantsData);
+
+    const restaurantGridWidget = dataJson?.data?.cards?.filter(
+      (c) =>
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget",
+    );
+    const restaurantsData = restaurantGridWidget.filter(
+      (c) => c?.card?.card?.gridElements?.infoWithStyle?.restaurants,
+    );
+    console.log("restaurantGridWidget useRes", restaurantGridWidget);
     setAllRestaurants(restaurantsData);
     setLoading(false);
   };

@@ -25,13 +25,13 @@ const useRestaurantDetails = (restaurantId) => {
 
     const restaurantDetailsInfo =
       restDetailArray[4]?.card?.card?.itemCards;
-    console.log("restaurantDetailsInfo", restaurantDetailsInfo);
+    // console.log("restaurantDetailsInfo", restaurantDetailsInfo);
 
-    console.log(
-      "restaurantDetailJson?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR",
-      restaurantDetailJson?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards,
-      // ?.cards[4]?.card?.card,
-    );
+    // console.log(
+    //   "restaurantDetailJson?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR",
+    //   restaurantDetailJson?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR.cards,
+    //   // ?.cards[4]?.card?.card,
+    // );
 
     // const restaurantCategoryInfo =
     //   restaurantDetailJson?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(

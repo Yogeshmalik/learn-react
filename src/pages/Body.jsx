@@ -1,5 +1,5 @@
 import RestaurantCard, { withVegLabel } from "../components/RestaurantCard";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Shimmer from "../components/Shimmer";
 import { Link, NavLink, useParams } from "react-router";
 import { RESTAURANT_LIST_URL } from "../constants";
@@ -15,18 +15,33 @@ const Body = () => {
   const { allRestaurants, loading, setLoading } = useRestaurants();
   const RestaurantCardVeg = withVegLabel(RestaurantCard);
 
-  useEffect(() => {
-    setFilteredRestaurants(allRestaurants);
+  console.log("filteredRestaurants", filteredRestaurants);
+
+  
+  const normalizedRestaurants = useMemo(() => {
+    const combined = allRestaurants.flatMap(
+      (item) =>
+        item?.card?.card?.gridElements?.infoWithStyle?.restaurants || [],
+    );
+
+    return Array.from(new Map(combined.map((r) => [r?.info?.id, r])).values());
   }, [allRestaurants]);
+
+  useEffect(() => {
+    setFilteredRestaurants(normalizedRestaurants);
+  }, [normalizedRestaurants]);
+
+
+  console.log("uniqueRestaurants", normalizedRestaurants);
 
   const resetSearch = () => {
     setSearchInput("");
-    setFilteredRestaurants(allRestaurants);
+    setFilteredRestaurants(normalizedRestaurants);
   };
 
   return (
-    <div className="body-container flex flex-col p-2 my-2 overflow-auto max-w-7xl mx-auto">
-      <div className="search-bar-container flex max-h-8 rounded-md max-w-fit justify-center overflow-hidden border border-black p-2 w-full items-center space-x-1">
+    <div className="body-container flex flex-col p-2 my-2 overflow-auto max-w-7xl mx-auto w-full">
+      <div className="search-bar-container self-start flex max-h-8 rounded-md max-w-fit justify-center overflow-hidden border border-black p-2 w-full items-center space-x-1">
         <input
           className="search-bar outline-0"
           type="text"
@@ -44,7 +59,7 @@ const Body = () => {
             alt="search icon"
             onClick={() => {
               setLoading(true);
-              const info = filterInfo(searchInput, allRestaurants);
+              const info = filterInfo(searchInput, normalizedRestaurants);
               setFilteredRestaurants(info);
               setLoading(false);
             }}
@@ -68,10 +83,10 @@ const Body = () => {
           ""
         )}
       </>
-      {allRestaurants?.length === 0 ? (
+      {filteredRestaurants?.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="restaurants flex flex-wrap gap-4 mx-auto w-fit md:justify-evenly xl:justify-between">
+        <div className="restaurants flex flex-wrap gap-4 mx-auto w-full md:justify-evenly xl:justify-between">
           <>
             {filteredRestaurants?.map((restaurant) => {
               return (
