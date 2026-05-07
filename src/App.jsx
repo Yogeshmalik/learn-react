@@ -2,7 +2,13 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./pages/Body";
 import Footer from "./components/Footer";
-import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-router";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useNavigate,
+  useLocation,
+} from "react-router";
 import About from "./pages/About";
 import ErrorPage from "./components/ErrorPage";
 import Contact from "./pages/Contact";
@@ -17,7 +23,9 @@ const App = () => {
   const [isConnecting, setIsConnecting] = useState(false);
   const isOnline = useOnline();
   const prevOnlineRef = useRef(isOnline);
-const navigate = useNavigate()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const hideLayout = location.pathname === "/auth/login";
 
   useEffect(() => {
     const isAuth = localStorage.getItem("isAuth");
@@ -58,15 +66,15 @@ const navigate = useNavigate()
   return (
     <div className="App relative box-border mt-24 w-full h-scree mx-auto flex flex-col justify-between overflow-auto">
       <AuthLayout>
-        <Header />
+        {!hideLayout && <Header />}
         <Outlet />
-        <Footer />
+        {!hideLayout && <Footer />}
       </AuthLayout>
     </div>
   );
 };
 
-const appRouter = createBrowserRouter([
+export const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <App />,
@@ -88,14 +96,12 @@ const appRouter = createBrowserRouter([
         path: "restaurant-details/:restaurantId",
         element: <RestaurantPage />,
       },
+      {
+        path: "auth/login",
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: "auth/login",
-    element: <Login />,
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<RouterProvider router={appRouter} />);
+export default App;

@@ -4,7 +4,7 @@ const AuthLayout = ({ children }) => {
   const isAuth = localStorage.getItem("isAuth");
 
   if (!isAuth) {
-    return <Navigate to="auth/login" />;
+    return <Navigate to="/auth/login" replace />;
   }
 
   return children;
