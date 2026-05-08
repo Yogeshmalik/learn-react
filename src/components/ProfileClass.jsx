@@ -35,7 +35,7 @@ class ProfileClass extends React.Component {
 
     return (
       <Suspense fallback={<Shimmer />}>
-        <div className="profile-pages text-green-700 flex flex-col items-center space-y-2 w-full">
+        <div className="profile-pages bg-green-50 text-green-700 flex flex-col p-2 border-2 border-green-700 rounded-md items-center space-y-2 w-full">
           <p className="class-heading font-semibold text-lg">
             This is ProfileClass class component
           </p>
@@ -54,7 +54,7 @@ class ProfileClass extends React.Component {
               }))
             }
           />
-          <span className="github-data-block class-heading flex flex-col p-2 border-2 border-green-700 rounded-md text-center space-y-2">
+          <span className="github-data-block class-heading flex flex-col text-center space-y-2">
             <p className="class-heading text-xl uppercase">Github Info</p>
             <img
               src={this.state.userInfo.avatar_url}

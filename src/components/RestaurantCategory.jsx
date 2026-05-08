@@ -18,13 +18,13 @@ const RestaurantCategory = ({
   };
 
   return (
-    <div className="flex flex-col rounded-lg my-2 min-h-20 space-y-2 max-w-5xl mx-auto ">
+    <div className="flex flex-col rounded-lg md:my-2 md:min-h-20 space-y-2 max-w-5xl mx-auto ">
       <div className="flex flex-col justify-between m-2 mx-auto w-full">
         <div
-          className="flex text-lg justify-between bg-gray-300 py-4 px-6 rounded-t-lg cursor-pointer hover:shadow-lg shadow-amber-200"
+          className="flex text-lg justify-between bg-gray-300 py-1 px-3 md:py-4 md:px-6 rounded-t-lg cursor-pointer hover:shadow-lg shadow-amber-200"
           onClick={displayItems}
         >
-          <span className="flex font-bold">
+          <span className="flex font-semibold md:font-bold">
             {category?.card?.card?.title} ({category?.card?.card?.title?.length}
             )
           </span>
@@ -156,12 +156,12 @@ const RestaurantCategory = ({
                       </span>
                     )}
                   </li>
-                  <div className="flex w-full h-full my-auto max-h-28 max-w-20 md:max-h-28 md:max-w-42 items-center justify-center relative">
+                  <div className="flex w-full h-full my-auto max-h-28 max-w-24 md:max-h-28 md:max-w-42 items-center justify-center relative">
                     {item?.card?.info?.imageId ? (
                       <img
                         src={IMG_CDN_URL + item?.card?.info?.imageId}
                         alt="Dish Image"
-                        className="flex self-center w-full h-full max-h-24 max-w-16 md:max-h-28 ml-auto md:max-w-42 object-cover rounded-xl shadow-lg hover:shadow-violet-400 transition-all ease-in-out duration-300 hover:scale-125"
+                        className="flex self-center w-full h-full max-h-24 max-w-24 md:max-h-28 ml-auto md:max-w-42 object-cover rounded-xl shadow-lg hover:shadow-violet-400 transition-all ease-in-out duration-300 hover:scale-125"
                       />
                     ) : (
                       <img
@@ -174,7 +174,7 @@ const RestaurantCategory = ({
                       size="small"
                       color="black"
                       label="Add+"
-                      className="absolute bottom-1"
+                      className="absolute bottom-2.5 md:bottom-1.5"
                     />
                   </div>
                 </ul>

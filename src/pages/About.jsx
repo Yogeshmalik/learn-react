@@ -12,7 +12,7 @@ const About = () => {
       <h3 className="text-lg font-semibold text-center">
         This is About Page showing Functional and Class based components
       </h3>
-      <div className="profile-components flex md:flex-row flex-col mt-4 p-2 gap-4 rounded-md justify-between mx-auto">
+      <div className="profile-components flex md:flex-row flex-col mt-4 p-2 gap-4 space-y-2 rounded-md justify-between mx-auto">
         <Profile name="Yogesh" />
         <ProfileClass name="Yogesh" />
       </div>

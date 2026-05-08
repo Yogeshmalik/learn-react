@@ -35,9 +35,9 @@ const RestaurantPage = () => {
       ) : (
         <>
           <div className="restaurant-details md:flex space-x-4 justify-between max-w-5xl mx-auto w-full">
-            <div className="items-cente my-5 rounded-2xl p-4 md:p-10 flex mx-auto justify-between w-full shadow-2xl">
+            <div className="items-cente mb-5 md:my-5 rounded-2xl p-4 md:p-10 flex mx-auto justify-between w-full shadow-2xl">
               <div className="font-semibold md:flex flex-col uppercase items-cente space-x-2 space-y-1">
-                <div className="flex flex-wrap justify-start items-center text-left space-x-1 w-fu">
+                <div className="flex md:flex-row flex-col flex-wrap justify-start md:items-center text-left space-x-1 w-fu">
                   <span className="flex text-xl font-bold md:text-3xl text-black">
                     {restaurantInfo?.name || "Restaurant"}
                   </span>
@@ -74,7 +74,7 @@ const RestaurantPage = () => {
 
               {restaurantInfo?.cloudinaryImageId ? (
                 <img
-                  className="restaurant-details-image max-w-36 max-h-56 md:max-w-96 md:max-h-48 object-cover my2 rounded-md w-full h-fit shadow hover:shadow-violet-400 transition-all ease-in-out duration-300 hover:scale-125"
+                  className="restaurant-details-image max-w-42 max-h-36 md:max-w-96 md:max-h-48 object-cover object-top md:object-center my2 rounded-md w-full md:h-fit shadow hover:shadow-violet-400 transition-all ease-in-out duration-300 hover:scale-125"
                   src={IMG_CDN_URL + restaurantInfo?.cloudinaryImageId}
                   alt="restaurant-details-image"
                 />

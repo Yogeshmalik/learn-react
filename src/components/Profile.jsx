@@ -28,7 +28,7 @@ const Profile = ({ name }) => {
       {loading ? (
         <Shimmer />
       ) : (
-        <div className="profile-pages text-orange-500 flex flex-col items-center space-y-2 w-full">
+        <div className="profile-pages text-orange-500 bg-orange-50 border-2 border-orange-500 p-2 rounded-md flex flex-col items-center space-y-2 w-full">
           <p className="function-heading text-lg font-semibold">
             This is Profile Functional Componenent
           </p>
@@ -37,7 +37,7 @@ const Profile = ({ name }) => {
             Count: {count}
           </p>
           <Button onClick={handleCount} label="Count" />
-          <span className="github-data-block function-heading flex flex-col p-2 border-2 border-orange-500 rounded-md text-center space-y-2">
+          <span className="github-data-block function-heading flex flex-col text-center space-y-2">
             <p className="function-heading text-xl uppercase">Github Info</p>
             <img
               src={fetchGithubData.avatar_url}
