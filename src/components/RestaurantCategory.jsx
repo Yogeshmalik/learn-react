@@ -6,23 +6,19 @@ import { IMG_CDN_URL } from "../constants";
 const RestaurantCategory = ({
   restaurantCategoryInfo,
   category,
-  // setShowItems,
-  // showItems,
-  // displayItems,
+  setShowItems,
+  showItems,
 }) => {
   console.log("category", category);
-  const [showItems, setShowItems] = useState(true);
   const { restaurantId } = useParams();
 
   const displayItems = () => {
-    setShowItems(!showItems);
+    setShowItems();
   };
 
   return (
     <div className="flex flex-col rounded-lg my-2 min-h-20 space-y-2 max-w-5xl mx-auto ">
-      {/* {restaurantCategoryInfo.map((category) => ( */}
       <div
-        // key={category?.card?.card?.title}
         className="flex flex-col justify-between m-2 cursor-pointer mx-auto w-full"
         onClick={displayItems}
       >

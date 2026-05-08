@@ -9,11 +9,7 @@ import RestaurantCategory from "../components/RestaurantCategory";
 const RestaurantPage = () => {
   const { restaurantId } = useParams();
   const { loading, restaurantDetail } = useRestaurantDetails(restaurantId);
-  const [showItems, setShowItems] = useState(true);
-
-  const displayItems = () => {
-    setShowItems(!showItems);
-  };
+  const [showItems, setShowItems] = useState(0);
 
   console.log("restaurantId", restaurantId);
   console.log("restaurantDetail respage", restaurantDetail);
@@ -83,10 +79,12 @@ const RestaurantPage = () => {
             <RestaurantCategory
               category={category}
               key={category?.card?.card?.title}
-              // displayItems={setShowItems[i]}
+              showItems={i === showItems}
+              setShowItems={() =>
+                setShowItems((prev) => (prev === i ? null : i))
+              }
             />
           ))}
-          {/* <RestaurantCategory restaurantCategoryInfo={restaurantCategoryInfo} /> */}
         </>
       )}
     </div>
