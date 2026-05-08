@@ -68,7 +68,7 @@ const App = () => {
   }
 
   return (
-    <div className="App relative box-border mt-24 w-full h-scree mx-auto flex flex-col justify-between overflow-auto">
+    <div className="App relative box-border pt-24 w-full min-h-dvh h-full mx-auto flex flex-col justify-between overflow-auto">
       <AuthLayout>
         {!hideLayout && <Header />}
         <Outlet />
