@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, lazy } from "react";
 import { useParams } from "react-router";
 import { IMG_CDN_URL, RESTAURANT_DETAILS_URL } from "../constants";
 import NoImageFoundImg from "../assets/no-image-found.jpg";
 import Shimmer from "../components/Shimmer";
 import useRestaurantDetails from "../hooks/useRestaurantDetails";
 import useRestaurants from "../hooks/useRestaurants";
-import RestaurantCategory from "../components/RestaurantCategory";
+ import RestaurantCategory from "../components/RestaurantCategory";
 
 const RestaurantPage = () => {
   const { restaurantId } = useParams();

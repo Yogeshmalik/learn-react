@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import useRestaurantDetails from "../hooks/useRestaurantDetails";
 import { IMG_CDN_URL } from "../constants";
+import Button from "./Button";
 
 const RestaurantCategory = ({
   restaurantCategoryInfo,
@@ -18,11 +19,11 @@ const RestaurantCategory = ({
 
   return (
     <div className="flex flex-col rounded-lg my-2 min-h-20 space-y-2 max-w-5xl mx-auto ">
-      <div
-        className="flex flex-col justify-between m-2 cursor-pointer mx-auto w-full"
-        onClick={displayItems}
-      >
-        <div className="flex text-lg justify-between bg-gray-300 py-4 px-6 rounded-t-lg hover:shadow-lg shadow-amber-200">
+      <div className="flex flex-col justify-between m-2 mx-auto w-full">
+        <div
+          className="flex text-lg justify-between bg-gray-300 py-4 px-6 rounded-t-lg cursor-pointer hover:shadow-lg shadow-amber-200"
+          onClick={displayItems}
+        >
           <span className="flex font-bold">
             {category?.card?.card?.title} ({category?.card?.card?.title?.length}
             )
@@ -30,17 +31,17 @@ const RestaurantCategory = ({
           <span className="flex pb-1 items-center h-full">&#x2304;</span>
         </div>
         {showItems && (
-          <div className="block">
+          <div className="block z-20">
             {category?.card?.card?.itemCards?.map((item) => (
               <span
                 className=" bg-gray-100 px-4 flex w-full justify-betwee items-cente"
                 key={item?.card?.info?.id}
               >
                 <ul
-                  className="border-b border-gray-300 flex w-full p-2 justify-between space-x-2 items-cente"
+                  className="border-b last:border- border-gray-300 flex w-full p-2 justify-between space-x-2 items-cente"
                   key={item?.card?.info?.id}
                 >
-                  <li className="w-full items-start">
+                  <li className="w-full items-start my-2">
                     <span className="flex font-semibold md:text-lg w-ful">
                       {item?.card?.info?.name}
                     </span>
@@ -169,6 +170,12 @@ const RestaurantCategory = ({
                         className="flex self-center w-full h-full max-h-24 max-w-16 md:max-h-28 ml-auto md:max-w-42 object-cover rounded-xl shadow-lg hover:shadow-violet-400 transition-all ease-in-out duration-300 hover:scale-125"
                       />
                     )}
+                    <Button
+                      size="small"
+                      color="black"
+                      label="Add+"
+                      className="absolute bottom-1"
+                    />
                   </div>
                 </ul>
               </span>

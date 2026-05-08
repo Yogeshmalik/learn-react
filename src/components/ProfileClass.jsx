@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Button from "./Button";
+import Shimmer from "./Shimmer";
 
 class ProfileClass extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class ProfileClass extends React.Component {
     this.state = {
       count: 0,
       userInfo: [],
+      loading: true,
     };
     this.controller = new AbortController();
   }
@@ -19,6 +21,7 @@ class ProfileClass extends React.Component {
     // console.log("fetchGithuJson", fetchGithubJson);
     this.setState({
       userInfo: fetchGithubJson,
+      loading: false,
     });
   }
 
@@ -28,37 +31,41 @@ class ProfileClass extends React.Component {
   }
 
   render() {
+    if (this.state.loading) return <Shimmer />;
+
     return (
-      <div className="profile-pages text-green-700 flex flex-col items-center space-y-2">
-        <p className="class-heading font-semibold text-lg">
-          This is ProfileClass class component
-        </p>
-        <p className="class-heading font-semibold text-lg">
-          Name: {this.props.name}
-        </p>
-        <p className="class-heading font-semibold text-lg">
-          Count: {this.state.count}
-        </p>
-        <Button
-          label="Count"
-          color='green'
-          onClick={() =>
-            this.setState((prevState) => ({
-              count: prevState.count + 1,
-            }))
-          }
-        />
-        <span className="github-data-block class-heading flex flex-col p-2 border-2 border-green-700 rounded-md text-center space-y-2">
-          <p className="class-heading text-xl uppercase">Github Info</p>
-          <img
-            src={this.state.userInfo.avatar_url}
-            alt="git-avatar"
-            className="git-avatar max-w-24 w-full mx-auto rounded-full transition-all ease-in-out duration-300 hover:max-w-32 shadow outline-4 hover:shadow-green-500 hover:shadow-xl"
+      <Suspense fallback={<Shimmer />}>
+        <div className="profile-pages text-green-700 flex flex-col items-center space-y-2 w-full">
+          <p className="class-heading font-semibold text-lg">
+            This is ProfileClass class component
+          </p>
+          <p className="class-heading font-semibold text-lg">
+            Name: {this.props.name}
+          </p>
+          <p className="class-heading font-semibold text-lg">
+            Count: {this.state.count}
+          </p>
+          <Button
+            label="Count"
+            color="green"
+            onClick={() =>
+              this.setState((prevState) => ({
+                count: prevState.count + 1,
+              }))
+            }
           />
-          <p className="class-heading">Name: {this.state.userInfo.name}</p>
-          <p className="class-heading">{this.state.userInfo.bio}</p>
-        </span>
-      </div>
+          <span className="github-data-block class-heading flex flex-col p-2 border-2 border-green-700 rounded-md text-center space-y-2">
+            <p className="class-heading text-xl uppercase">Github Info</p>
+            <img
+              src={this.state.userInfo.avatar_url}
+              alt="git-avatar"
+              className="git-avatar max-w-24 w-full mx-auto rounded-full transition-all ease-in-out duration-300 hover:scale-125 shadow outline-4 hover:shadow-green-500 hover:shadow-xl"
+            />
+            <p className="class-heading">Name: {this.state.userInfo.name}</p>
+            <p className="class-heading">{this.state.userInfo.bio}</p>
+          </span>
+        </div>
+      </Suspense>
     );
   }
 }

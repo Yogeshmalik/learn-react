@@ -1,6 +1,9 @@
-import React from "react";
-import Profile from "../components/Profile";
-import ProfileClass from "../components/ProfileClass";
+import React, { lazy } from "react";
+// import Profile from "../components/Profile";
+// import ProfileClass from "../components/ProfileClass";
+import Shimmer from "../components/Shimmer";
+const Profile = lazy(() => import("../components/Profile"));
+const ProfileClass = lazy(() => import("../components/ProfileClass"));
 
 const About = () => {
   return (

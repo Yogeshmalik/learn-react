@@ -23,9 +23,11 @@ const ErrorPage = () => {
       </h2>
       <Link to="/">
         <Button
+          size="large"
           color="green"
           label="Back to home"
-          className="error-back-to-home"
+          className="error-back-to-home border-2"
+          src='https://img.icons8.com/?size=100&id=2tuQdCmArB2K&format=png&color=40C057'
         />
       </Link>
     </div>
