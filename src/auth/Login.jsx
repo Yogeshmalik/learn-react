@@ -22,7 +22,7 @@ export const Login = () => {
 
   return (
     <div className="login-page m-auto flex flex-col h-screen justify-center items-center space-y-4 md:space-y-8">
-      <h1 className="signin-heading text-3xl uppercase font-semibold text-amber-500">
+      <h1 className="signin-heading text-3xl uppercase font-semibold text-violet-500 text-center">
         Sign In to view restaurants
       </h1>
       <Formik
@@ -46,10 +46,10 @@ export const Login = () => {
         }}
       >
         {({ errors, touched }) => (
-          <Form className="formik-form borde border-amber-500 rounded-md flex flex-col p-4 md:min-w-96 shadow-lg hover:shadow-2xl hover:shadow-amber-500 space-y-4 mx-auto">
+          <Form className="formik-form borde border-amber-500 rounded-md flex flex-col p-4 w-full max-w-xs md:max-w-96 shadow-lg hover:shadow-2xl shadow-amber-500 space-y-4 mx-auto">
             <label
               htmlFor="firstName"
-              className="text-md text-amber-500 font-semibold flex flex-col"
+              className="text-lg text-black font-semibold flex flex-col w-full"
             >
               First Name
               <Field
@@ -58,7 +58,7 @@ export const Login = () => {
                 placeholder="First Name"
                 type="text"
                 autoComplete="current-first-name"
-                className="outline-0 shadow p-1 text-orange-500 placeholder:font-normal"
+                className="outline-0 shadow p-1.5 text-orange-500 placeholder:font-normal"
               />
               {errors.firstName && touched.firstName ? (
                 <div className="form-error-tag text-red-500">
@@ -69,7 +69,7 @@ export const Login = () => {
 
             <label
               htmlFor="lastName"
-              className="text-md text-amber-500 font-semibold flex flex-col"
+              className="text-lg text-black font-semibold flex flex-col"
             >
               Last Name
               <Field
@@ -78,7 +78,7 @@ export const Login = () => {
                 placeholder="Last Name"
                 type="text"
                 autoComplete="current-last-name"
-                className="outline-0 shadow p-1 text-orange-500 placeholder:font-normal"
+                className="outline-0 shadow p-1.5 text-orange-500 placeholder:font-normal"
               />
               {errors.lastName && touched.lastName ? (
                 <div className="form-error-tag text-red-500">
@@ -89,7 +89,7 @@ export const Login = () => {
 
             <label
               htmlFor="email"
-              className="text-md text-amber-500 font-semibold flex flex-col"
+              className="text-lg text-black font-semibold flex flex-col"
             >
               Email*
               <Field
@@ -98,7 +98,7 @@ export const Login = () => {
                 placeholder="a@b.co"
                 type="email"
                 autoComplete="current-email"
-                className="outline-0 shadow p-1 text-orange-500 placeholder:font-normal"
+                className="outline-0 shadow p-1.5 text-orange-500 placeholder:font-normal"
               />
               {errors.email && touched.email ? (
                 <div className="form-error-tag text-red-500">
@@ -109,7 +109,7 @@ export const Login = () => {
 
             <label
               htmlFor="password"
-              className="text-md text-amber-500 font-semibold flex flex-col"
+              className="text-lg text-black font-semibold flex flex-col"
             >
               Password*
               <Field
@@ -118,7 +118,7 @@ export const Login = () => {
                 placeholder="12345678"
                 type="password"
                 autoComplete="current-password"
-                className="outline-0 shadow p-1 text-orange-500 placeholder:font-normal"
+                className="outline-0 shadow p-1.5 text-orange-500 placeholder:font-normal"
               />
               {errors.password && touched.password ? (
                 <div className="form-error-tag text-red-500">
@@ -126,7 +126,7 @@ export const Login = () => {
                 </div>
               ) : null}
             </label>
-            <Button type="submit" label="Submit" />
+            <Button type="submit" label="Submit" className="mx-auto" />
           </Form>
         )}
       </Formik>

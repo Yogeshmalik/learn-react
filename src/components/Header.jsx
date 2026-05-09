@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { TitleImg } from "../constants";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Button from "./Button";
 import useOnline from "../hooks/useOnline";
 
@@ -64,11 +64,12 @@ const NavItems = () => {
 const LoginLogoutButtons = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const isOnline = useOnline();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("isAuth");
-    window.location.href = "auth/login";
+    navigate("/auth/login");
   };
 
   return (
