@@ -10,6 +10,14 @@
   ],
   "rewrites": [
     {
+      "source": "/dapi/(.*)",
+      "destination": "https://www.swiggy.com/dapi/$1"
+    },
+    {
+      "source": "/mapi/(.*)",
+      "destination": "https://www.swiggy.com/mapi/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
