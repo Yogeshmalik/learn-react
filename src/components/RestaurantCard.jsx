@@ -9,12 +9,12 @@ const RestaurantCard = ({
   cloudinaryImageId,
 }) => {
   return (
-    <div className="restaurant-card hover:scale-95 transition-all duration-300 ease-in-out w-full">
+    <div className="restaurant-card h-full flex flex-col justify-star hover:scale-95 transition-all duration-300 ease-in-out w-full">
       <div className="relativ">
         <img
           src={IMG_CDN_URL + cloudinaryImageId}
           alt="Restaurant Image"
-          className="restaurant-image max-w-70 w-full object-cover h-48 rounded-xl drop-shadow-xl/25 "
+          className="restaurant-image max-w-72 w-full object-cover h-48 rounded-xl drop-shadow-xl/25 "
         />
       </div>
       <div className="flex flex-col p-2">
@@ -77,8 +77,8 @@ const RestaurantCard = ({
 export const withVegLabel = (RestaurantCard) => {
   return (props) => {
     return (
-      <div className="relative">
-        <label className="px-3 p-1 absolute z-10 bottom-30 left-25 rounded-2xl font-semibold text-green-500 bg-black opacity-75">
+      <div className="relative grow">
+        <label className="px-3 p-1 absolute z-10 md:bottom-36 left-1/3 -translate-y-1/6 md:translate-y-1/6 bottom-40 d:left-25 rounded-2xl font-semibold text-green-500 bg-black opacity-75">
           Pure Veg
         </label>
         <RestaurantCard {...props} />

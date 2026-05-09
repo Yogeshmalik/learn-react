@@ -86,7 +86,7 @@ const Body = () => {
       {filteredRestaurants?.length === 0 ? (
         <Shimmer />
       ) : (
-        <div className="restaurants flex flex-wrap gap-4 mx-auto w-full md:justify-evenly xl:justify-between">
+        <div className="restaurants flex flex-wrap grow gap-4 h-full mx-auto w-full justify-between md:justify-start xl:justify-between">
           <>
             {filteredRestaurants?.map((restaurant) => {
               return (
@@ -94,7 +94,7 @@ const Body = () => {
                   key={restaurant?.info?.id}
                   to={`/restaurant-details/${restaurant?.info?.id}`}
                   state={{ restaurant: restaurant?.info }}
-                  className="restaurant-card-link flex flex-col justify-between max-w-40 md:max-w-72 w-full"
+                  className="restaurant-card-link mx-auto md:mx-0 flex flex-col grow items-stretch max-w-48 md:max-w-72 w-full"
                 >
                   {restaurant?.info?.veg ? (
                     <RestaurantCardVeg {...restaurant?.info} />
