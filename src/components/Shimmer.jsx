@@ -1,6 +1,6 @@
 const Shimmer = () => {
   return (
-    <div className="shimmer-card-container flex flex-wrap gap-4 py-2 w-full">
+    <div className="shimmer-card-container flex flex-wrap gap-4 py-2 w-full animate-pulse">
       {Array(8)
         .fill("")
         .map((e, index) => {

@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { TitleImg } from "../constants";
 import { Link, useNavigate } from "react-router";
 import Button from "./Button";
+import Cart from "../pages/Cart";
 import useOnline from "../hooks/useOnline";
+import UserContext from "../providers/UserContext";
+import UserDropdownMenu from "./UserDropdownMenu";
 
 const Title = () => {
   return (
@@ -35,8 +38,9 @@ const navLinks = [
 ];
 
 const NavItems = () => {
+  const isOnline = useOnline();
   return (
-    <ul className="navitem-list flex space-x-5 items-center">
+    <ul className="navitem-list flex space-x-1 md:space-x-5 items-center">
       {navLinks.map((item) => {
         return (
           <Link
@@ -57,14 +61,25 @@ const NavItems = () => {
           </Link>
         );
       })}
+      <span label="Online Status" className="ml- text-2xl">
+        {isOnline ? (
+          <img
+            src="https://png.pngtree.com/png-vector/20230926/ourmid/pngtree-green-wifi-symbol-network-png-image_10115831.png"
+            className="w-10 h-8 flex "
+          />
+        ) : (
+          "🔴"
+        )}
+      </span>
     </ul>
   );
 };
 
 const LoginLogoutButtons = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const isOnline = useOnline();
   const navigate = useNavigate();
+  const data = useContext(UserContext);
+  console.log("data-loginlogoutbtn", data);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -75,14 +90,15 @@ const LoginLogoutButtons = () => {
   return (
     <div className="login-logout-buttons flex items-center">
       {isLoggedIn ? (
-        <>
+        <div className="mx-aut px-3 py-2">
           <Button
             onClick={handleLogout}
             label="Logout"
-            src={"https://cdn-icons-png.flaticon.com/512/9653/9653907.png"}
+            size="small"
+            color="red"
+            src={"https://cdn-icons-png.flaticon.com/512/12635/12635060.png"}
           />
-          <span className="ml-1 text-2xl">{isOnline ? "🟢" : "🔴"}</span>
-        </>
+        </div>
       ) : (
         <Button
           onClick={() => {
@@ -95,13 +111,29 @@ const LoginLogoutButtons = () => {
   );
 };
 
+const CartButton = () => {
+  const navigate = useNavigate();
+  return (
+    <Link to="/cart" className="flex items-center ">
+      <Button
+        label="Cart"
+        src="https://uxwing.com/wp-content/themes/uxwing/download/e-commerce-currency-shopping/shopping-cart-trolley-icon.png"
+        // onClick={navigate("/cart")}
+      />
+    </Link>
+  );
+};
+
 const Header = () => {
   return (
-    <div className="header-component p-2 rounded-b-4xl opacity-95 bg-gray-100 h-16 md:h-20 w-full shadow-lg z-50 items-center fixed top-0 right-0 left-0 mb-2 overflow-hidden">
+    <div className="header-component p-2 rounded-b-4xl opacity-95 bg-gray-100 h-16 md:h-20 w-full shadow-lg z-50 items-center fixed top-0 right-0 left-0 mb-2 overflow-hidde">
       <span className="max-w-7xl w-full flex justify-between h-full items-center mx-auto">
         <Title />
         <NavItems />
-        <LoginLogoutButtons />
+        <span className="flex space-x-1 md:space-x-">
+          <UserDropdownMenu />
+          <CartButton />
+        </span>
       </span>
     </div>
   );

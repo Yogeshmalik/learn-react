@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-import Body from "./pages/Body";
+import Body from "./pages/Restaurants";
 import Footer from "./components/Footer";
 import {
   createBrowserRouter,
@@ -16,6 +16,7 @@ import Login from "./auth/Login";
 import { useEffect, useRef, useState } from "react";
 import AuthLayout from "./auth/AuthLayout";
 import useOnline from "./hooks/useOnline";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -53,17 +54,21 @@ const App = () => {
 
   if (!isOnline) {
     return (
-      <h1 className="font-bold text-2xl text-red-500">
-        🔴Offline! Check internet connection!!
-      </h1>
+      <div className="flex items-center text-center w-full justify-center font-bold text-2xl space-x-2 text-red-500 min-h-screen m-auto">
+        <h1 className="w-full text-center mx-auto">🔴Offline! Check internet connection!!</h1>
+      </div>
     );
   }
 
   if (isConnecting) {
     return (
-      <h1 className="font-bold text-2xl text-green-500">
-        🟢Connected to internet...
-      </h1>
+      <div className="flex items-center justify-center font-bold text-2xl space-x-2 text-green-500 min-h-screen mx-auto">
+        <img
+          src="https://png.pngtree.com/png-vector/20230926/ourmid/pngtree-green-wifi-symbol-network-png-image_10115831.png"
+          className="w-10 h-8 flex "
+        />
+        <h1>Connected to internet...</h1>
+      </div>
     );
   }
 
@@ -95,6 +100,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "restaurant-details/:restaurantId",

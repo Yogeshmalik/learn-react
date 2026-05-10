@@ -5,14 +5,14 @@ const Button = ({ label, onClick, type, src, color, className, size }) => {
     green:
       "text-green-600 hover:bg-green-600 border-green-600 hover:text-white",
     blue: "text-blue-400 hover:bg-blue-400 border-blue-400 hover:text-white",
-    red: "text-red-400 hover:bg-red-400 border-red-400 hover:text-white",
+    red: "text-red-500 hover:bg-red-500 border-red-500 hover:text-white",
     black: "text-white bg-black hover:bg-white border-black hover:text-black",
   };
   const selectedColor = colorMap[color] || colorMap.orange;
 
   const sizeMap = {
     small: "md:min-w-none w-fit h-auto p-1 font-medium text-sm",
-    regular: "md:min-w- w-fit h-auto p-2 md:p-1.5 font-semibold text-base",
+    regular: "md:min-w- w-fit h-auto p-0.5 md:p-1.5 font-semibold text-base",
     large: "md:min-w- w-fit h-auto p-3 md:p-2 font-semibold text-lg",
   };
   const selectedSize = sizeMap[size] || sizeMap.regular;

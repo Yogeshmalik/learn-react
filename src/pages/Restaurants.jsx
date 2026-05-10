@@ -17,7 +17,6 @@ const Body = () => {
 
   console.log("filteredRestaurants", filteredRestaurants);
 
-  
   const normalizedRestaurants = useMemo(() => {
     const combined = allRestaurants.flatMap(
       (item) =>
@@ -30,7 +29,6 @@ const Body = () => {
   useEffect(() => {
     setFilteredRestaurants(normalizedRestaurants);
   }, [normalizedRestaurants]);
-
 
   console.log("uniqueRestaurants", normalizedRestaurants);
 
