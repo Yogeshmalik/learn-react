@@ -64,8 +64,11 @@ const NavItems = () => {
       <span label="Online Status" className="ml- text-2xl">
         {isOnline ? (
           <img
-            src="https://png.pngtree.com/png-vector/20230926/ourmid/pngtree-green-wifi-symbol-network-png-image_10115831.png"
-            className="w-10 h-8 flex "
+            src={
+              "https://cdn-icons-png.flaticon.com/512/7749/7749544.png" ||
+              "https://png.pngtree.com/png-vector/20230926/ourmid/pngtree-green-wifi-symbol-network-png-image_10115831.png"
+            }
+            className="w-10 h-auto flex"
           />
         ) : (
           "🔴"
