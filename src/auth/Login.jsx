@@ -39,6 +39,9 @@ export const Login = () => {
           console.log(values);
           if (values.email === "a@b.co" && values.password === "12345678") {
             localStorage.setItem("isAuth", "true");
+            // Combine and save the name
+            const fullName = `${values.firstName} ${values.lastName}`.trim();
+            localStorage.setItem("userName", fullName);
             navigate("/");
           } else {
             alert("Invalid Credentials");

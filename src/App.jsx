@@ -34,8 +34,12 @@ const App = () => {
     const data = {
       name: "Yogesh",
     };
-    // console.log("data.name", data.name);
-    setUserName(data.name);
+    const storedName = localStorage.getItem("userName");
+    if (storedName) {
+      setUserName(storedName);
+    } else {
+      setUserName(data.name);
+    }
   }, []);
 
   useEffect(() => {

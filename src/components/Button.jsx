@@ -7,6 +7,8 @@ const Button = ({ label, onClick, type, src, color, className, size }) => {
     blue: "text-blue-400 hover:bg-blue-400 border-blue-400 hover:text-white",
     red: "text-red-500 hover:bg-red-500 border-red-500 hover:text-white",
     black: "text-white bg-black hover:bg-white border-black hover:text-black",
+    white: "text-black bg-white hover:bg-black border-black hover:text-black",
+    noColor: "",
   };
   const selectedColor = colorMap[color] || colorMap.orange;
 
@@ -21,7 +23,7 @@ const Button = ({ label, onClick, type, src, color, className, size }) => {
     <button
       onClick={onClick}
       type={type}
-      className={`button-component rounded-md cursor-pointer items-center flex justify-center w-ful transition-colors duration-300 ease-in-out active:scale-95
+      className={`button-component rounded-md cursor-pointer items-center flex justify-center transition-colors duration-300 ease-in-out active:scale-95
         ${selectedColor}
         ${selectedSize}
         ${className}

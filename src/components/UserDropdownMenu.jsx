@@ -10,13 +10,18 @@ const UserDropdownMenu = () => {
   const isOnline = useOnline();
   const navigate = useNavigate();
   const data = useContext(UserContext);
-  //   console.log("data-loginlogoutbtn", data);
+  // console.log("data-UserDropdownMenu", data);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("isAuth");
+    // Clear the saved name
+    localStorage.removeItem("userName");
     navigate("/auth/login");
   };
+
+  const firstNameLetter = data?.loggedInUser?.charAt(0).toUpperCase();
+  // console.log('firstNameLetter',firstNameLetter)
 
   const UserDropdownItems = [
     {
@@ -55,15 +60,16 @@ const UserDropdownMenu = () => {
 
   return (
     <div className="relative ">
-      <span className="flex">
+      <span className=" rounded-full">
         <Button
           onClick={(e) => {
             e.stopPropagation();
             setShowMenu((prev) => !prev);
           }}
-          color="blue"
-          label={"User"}
-          src="https://cdn-icons-png.flaticon.com/512/17552/17552541.png"
+          color="orange"
+          className="md:rounded-full rounded-[50%] md:px-3 p-1 px-3 py-1 h-auto md:h-auto md:w-full w-full"
+          label={firstNameLetter || "User"}
+          // src="https://cdn-icons-png.flaticon.com/512/17552/17552541.png"
         />
       </span>
 
@@ -74,7 +80,8 @@ const UserDropdownMenu = () => {
               key={dropownItem.label}
               onClick={(e) => {
                 e.stopPropagation();
-                if (!dropownItem.disabled && dropownItem.action) item.action();
+                if (!dropownItem.disabled && dropownItem.action)
+                  dropownItem.action();
               }}
               className={`flex items-center space-x-2 px-2 py-1 text-sm w-full uppercase border-b border-b-gray-200 first:rounded-t-md last:rounded-b-md last:border-b-0 mt- 
                     ${

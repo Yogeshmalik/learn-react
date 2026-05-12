@@ -78,41 +78,41 @@ const NavItems = () => {
   );
 };
 
-const LoginLogoutButtons = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const navigate = useNavigate();
-  const data = useContext(UserContext);
-  console.log("data-loginlogoutbtn", data);
+// const LoginLogoutButtons = () => {
+//   const [isLoggedIn, setIsLoggedIn] = useState(true);
+//   const navigate = useNavigate();
+//   const data = useContext(UserContext);
+//   console.log("data-loginlogoutbtn", data);
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("isAuth");
-    navigate("/auth/login");
-  };
+//   const handleLogout = () => {
+//     setIsLoggedIn(false);
+//     localStorage.removeItem("isAuth");
+//     navigate("/auth/login");
+//   };
 
-  return (
-    <div className="login-logout-buttons flex items-center">
-      {isLoggedIn ? (
-        <div className="mx-aut px-3 py-2">
-          <Button
-            onClick={handleLogout}
-            label="Logout"
-            size="small"
-            color="red"
-            src={"https://cdn-icons-png.flaticon.com/512/12635/12635060.png"}
-          />
-        </div>
-      ) : (
-        <Button
-          onClick={() => {
-            setIsLoggedIn(true);
-          }}
-          label="Login"
-        />
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div className="login-logout-buttons flex items-center">
+//       {isLoggedIn ? (
+//         <div className="mx-aut px-3 py-2">
+//           <Button
+//             onClick={handleLogout}
+//             label="Logout"
+//             size="small"
+//             color="red"
+//             src={"https://cdn-icons-png.flaticon.com/512/12635/12635060.png"}
+//           />
+//         </div>
+//       ) : (
+//         <Button
+//           onClick={() => {
+//             setIsLoggedIn(true);
+//           }}
+//           label="Login"
+//         />
+//       )}
+//     </div>
+//   );
+// };
 
 const CartButton = () => {
   const navigate = useNavigate();
@@ -134,8 +134,8 @@ const Header = () => {
         <Title />
         <NavItems />
         <span className="flex space-x-1 md:space-x-">
-          <UserDropdownMenu />
           <CartButton />
+          <UserDropdownMenu />
         </span>
       </span>
     </div>
