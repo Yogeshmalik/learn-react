@@ -11,7 +11,7 @@ const RestaurantCategory = ({
   setShowItems,
   showItems,
 }) => {
-  console.log("category", category);
+  // console.log("category", category);
   const { restaurantId } = useParams();
 
   const displayItems = () => {

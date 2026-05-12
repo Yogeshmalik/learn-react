@@ -1,11 +1,12 @@
 import RestaurantCard, { withVegLabel } from "../components/RestaurantCard";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import Shimmer from "../components/Shimmer";
 import { Link, NavLink, useParams } from "react-router";
 import { RESTAURANT_LIST_URL } from "../constants";
 import { filterInfo } from "../utils/helper";
 import useRestaurants from "../hooks/useRestaurants";
 import useOnline from "../hooks/useOnline";
+import UserContext from "../providers/UserContext";
 
 const Body = () => {
   const isOnline = useOnline();
@@ -14,8 +15,9 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const { allRestaurants, loading, setLoading } = useRestaurants();
   const RestaurantCardVeg = withVegLabel(RestaurantCard);
+  const {userName, setUserName} = useContext(UserContext);
 
-  console.log("filteredRestaurants", filteredRestaurants);
+  // console.log("filteredRestaurants", filteredRestaurants);
 
   const normalizedRestaurants = useMemo(() => {
     const combined = allRestaurants.flatMap(
@@ -30,7 +32,7 @@ const Body = () => {
     setFilteredRestaurants(normalizedRestaurants);
   }, [normalizedRestaurants]);
 
-  console.log("uniqueRestaurants", normalizedRestaurants);
+  // console.log("uniqueRestaurants", normalizedRestaurants);
 
   const resetSearch = () => {
     setSearchInput("");
@@ -71,6 +73,16 @@ const Body = () => {
             onClick={resetSearch}
           />
         </button>
+        <input
+          className="search-bar outline-0 border-l-2 ml-2"
+          type="text"
+          maxLength={20}
+          placeholder="Provide User Name"
+          value={userName}
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+        />
       </div>
       <>
         {filteredRestaurants?.length ? (

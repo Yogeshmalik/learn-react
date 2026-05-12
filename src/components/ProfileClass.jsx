@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import Button from "./Button";
 import Shimmer from "./Shimmer";
+import UserContext from "../providers/UserContext";
 
 class ProfileClass extends React.Component {
   constructor(props) {
@@ -42,6 +43,13 @@ class ProfileClass extends React.Component {
           <p className="class-heading font-semibold text-lg">
             Name: {this.props.name}
           </p>
+          <UserContext.Consumer>
+            {({ loggedInUser }) => (
+              <p className="class-heading font-semibold text-lg">
+                Name from UserContext: {loggedInUser}
+              </p>
+            )}
+          </UserContext.Consumer>
           <p className="class-heading font-semibold text-lg">
             Count: {this.state.count}
           </p>

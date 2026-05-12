@@ -26,7 +26,7 @@ const useRestaurantDetails = (restaurantId) => {
 
     const restaurantInfoData =
       restaurantDetailJson?.data?.cards[2]?.card?.card?.info;
-      console.log('restaurantInfoData',restaurantInfoData)
+      // console.log('restaurantInfoData',restaurantInfoData)
 
     setRestaurantInfo(restaurantInfoData);
     setRestaurantDetail(restDetailArray);

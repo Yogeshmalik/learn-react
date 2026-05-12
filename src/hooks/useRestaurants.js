@@ -22,7 +22,7 @@ const useRestaurant = () => {
     const restaurantsData = restaurantGridWidget.filter(
       (c) => c?.card?.card?.gridElements?.infoWithStyle?.restaurants,
     );
-    console.log("restaurantGridWidget useRes", restaurantGridWidget);
+    // console.log("restaurantGridWidget useRes", restaurantGridWidget);
     setAllRestaurants(restaurantsData);
     setLoading(false);
   };

@@ -19,14 +19,14 @@ const RestaurantPage = () => {
   };
 
   console.log("restaurantId", restaurantId);
-  console.log("restaurantInfo", restaurantInfo);
+  // console.log("restaurantInfo", restaurantInfo);
 
   const restaurantCategoryInfo = restaurantDetail?.filter(
     (c) =>
       c?.card?.card?.["@type"] ===
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory",
   );
-  console.log("restaurantCategoryInfo ResPage", restaurantCategoryInfo);
+  // console.log("restaurantCategoryInfo ResPage", restaurantCategoryInfo);
 
   return (
     <div className="restaurant-details-page max-w-7xl w-full mx-auto p-2 md:p-0">

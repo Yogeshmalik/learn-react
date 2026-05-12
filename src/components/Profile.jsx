@@ -1,23 +1,25 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import Button from "./Button";
 import Shimmer from "./Shimmer";
+import UserContext from "../providers/UserContext";
 
 const Profile = ({ name }) => {
   const [count, setCount] = useState(0);
   const [fetchGithubData, setGithubDataFetch] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     githubApiFetch();
   }, []);
 
   const githubApiFetch = async () => {
-    setLoading(true)
+    setLoading(true);
     const githubData = await fetch("https://api.github.com/users/Yogeshmalik");
     const githubDataJson = await githubData.json();
     setGithubDataFetch(githubDataJson);
-    setLoading(false)
-    console.log("githubDataJson useeffect", githubDataJson);
+    setLoading(false);
+    // console.log("githubDataJson useeffect", githubDataJson);
   };
 
   const handleCount = () => {
@@ -34,6 +36,9 @@ const Profile = ({ name }) => {
           </p>
           <p className="function-heading text-lg font-semibold">Name: {name}</p>
           <p className="function-heading text-lg font-semibold">
+            Name from UserContext: {loggedInUser}
+          </p>
+          <p className="function-heading text-lg font-semibold">
             Count: {count}
           </p>
           <Button onClick={handleCount} label="Count" />
@@ -45,6 +50,7 @@ const Profile = ({ name }) => {
               className="git-avatar max-w-24 w-full mx-auto rounded-full transition-all ease-in-out duration-300 hover:scale-125 shadow outline-4 hover:shadow-orange-500 hover:shadow-xl"
             />
             <p className="function-heading">Name: {fetchGithubData.name}</p>
+
             <p className="function-heading">{fetchGithubData.bio}</p>
           </span>
         </div>
