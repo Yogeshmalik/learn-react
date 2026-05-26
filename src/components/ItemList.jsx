@@ -1,11 +1,19 @@
+import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../utils/constants";
 import Button from "./Button";
+import { addItem } from "../store/cartSlice";
 
-const CategoryItems = ({ category }) => {
-  //   console.log("category CategoryItem", category);
+const ItemList = ({ itemCards }) => {
+  const dispatch = useDispatch();
+  const handleAddItems = (item) => {
+    dispatch(addItem(item));
+  };
+
+  // const itemCards = categoryItem?.card?.card?.itemCards;
+
   return (
     <div>
-      {category?.card?.card?.itemCards?.map((item) => (
+      {itemCards?.map((item) => (
         <span
           className=" bg-gray-100 px-4 flex w-full justify-betwee items-cente"
           key={item?.card?.info?.id}
@@ -140,6 +148,7 @@ const CategoryItems = ({ category }) => {
                 color="black"
                 label="Add+"
                 className="absolute bottom-2.5 md:bottom-1.5"
+                onClick={() => handleAddItems(item)}
               />
             </div>
           </ul>
@@ -149,4 +158,4 @@ const CategoryItems = ({ category }) => {
   );
 };
 
-export default CategoryItems;
+export default ItemList;

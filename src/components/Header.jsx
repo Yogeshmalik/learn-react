@@ -82,7 +82,6 @@ const NavItems = () => {
 const CartButton = () => {
   const navigate = useNavigate();
   const cartItems = useSelector((store) => store.cart.items);
-  console.log("cartItems", cartItems);
   return (
     <Link to="/cart" className="flex items-center ">
       <Button

@@ -91,10 +91,10 @@ const RestaurantPage = () => {
               )}
             </div>
           </div>
-          {restaurantCategoryInfo.map((category, i) => (
+          {restaurantCategoryInfo.map((categoryList, i) => (
             <RestaurantCategory
-              category={category}
-              key={category?.card?.card?.title}
+              category={categoryList}
+              key={categoryList?.card?.card?.title}
               showItems={i === showItems}
               setShowItems={() =>
                 setShowItems((prev) => (prev === i ? null : i))

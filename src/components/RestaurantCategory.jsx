@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import useRestaurantDetails from "../hooks/useRestaurantDetails";
 import { IMG_CDN_URL } from "../utils/constants";
 import Button from "./Button";
-import CategoryItems from "./CategoryItems";
+import ItemList from "./ItemList";
 
 const RestaurantCategory = ({
   restaurantCategoryInfo,
@@ -33,7 +33,7 @@ const RestaurantCategory = ({
         </div>
         {showItems && (
           <div className="block z-20">
-            <CategoryItems category={category} />
+            <ItemList itemCards={category?.card?.card?.itemCards} />
           </div>
         )}
       </div>
