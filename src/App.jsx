@@ -18,6 +18,8 @@ import AuthLayout from "./auth/AuthLayout";
 import { useContext, useEffect, useRef, useState } from "react";
 import useOnline from "./hooks/useOnline";
 import Cart from "./pages/Cart";
+import { Provider } from "react-redux";
+import store from "../store/store";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -90,19 +92,21 @@ const App = () => {
   }
 
   return (
-    <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
-      <div className="App relative box-border pt-20 md:pt-24 w-full min-h-dvh h-full mx-auto flex flex-col justify-between overflow-auto">
-        <AuthLayout>
-          {/* {!hideLayout &&  */}
-          <Header />
-          {/* } */}
-          <Outlet />
-          {/* {!hideLayout &&  */}
-          <Footer />
-          {/* } */}
-        </AuthLayout>
-      </div>
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="App relative box-border pt-20 md:pt-24 w-full min-h-dvh h-full mx-auto flex flex-col justify-between overflow-auto">
+          <AuthLayout>
+            {/* {!hideLayout &&  */}
+            <Header />
+            {/* } */}
+            <Outlet />
+            {/* {!hideLayout &&  */}
+            <Footer />
+            {/* } */}
+          </AuthLayout>
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 

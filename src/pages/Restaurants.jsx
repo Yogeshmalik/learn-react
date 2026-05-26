@@ -14,6 +14,7 @@ const Body = () => {
   const { restaurantId } = useParams();
   const [searchInput, setSearchInput] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [activeFilter, setActiveFilter] = useState("");
   const { allRestaurants, loading, setLoading } = useRestaurants();
   const RestaurantCardVeg = withVegLabel(RestaurantCard);
   const { userName, setUserName, loggedInUser } = useContext(UserContext);
@@ -36,6 +37,7 @@ const Body = () => {
 
   useEffect(() => {
     setFilteredRestaurants(normalizedRestaurants);
+    setActiveFilter("");
   }, [normalizedRestaurants]);
 
   console.log("uniqueRestaurants", normalizedRestaurants);
@@ -43,6 +45,7 @@ const Body = () => {
   const resetSearch = () => {
     setSearchInput("");
     setFilteredRestaurants(normalizedRestaurants);
+    setActiveFilter("");
   };
 
   return (
@@ -78,8 +81,13 @@ const Body = () => {
             size="small"
             color="green"
             label="Top Rated Restaurants"
-            className="w-fit py-2 md:py-0"
-            onClick={() => setFilteredRestaurants(topRatedRestaurants)}
+            className={`w-fit py-2 md:py-0 
+              ${activeFilter === "topRatedRestaurants" ? "bg-green-600 text-white" : ""}
+              `}
+            onClick={() => {
+              setFilteredRestaurants(topRatedRestaurants);
+              setActiveFilter("topRatedRestaurants");
+            }}
           />
           <Button
             size="medium"
@@ -89,14 +97,6 @@ const Body = () => {
             onClick={resetSearch}
           />
         </span>
-        {/* <button className="reset-button">
-          <img
-            className="reset-icon max-h-5 cursor-pointer"
-            src="https://www.vhv.rs/dpng/d/248-2482573_repeat-reset-icon-svg-hd-png-download.png"
-            alt="Reset icon"
-            onClick={resetSearch}
-          />
-        </button> */}
         <input
           className="search-bar outline-0 hidden bg-gray-200 self-start md:flex max-h-8 rounded-md max-w-fit justify-center overflow-hidden border border-black p-2 w-full items-center space-x-1 font-semibold text-center"
           type="text"
