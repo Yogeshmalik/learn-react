@@ -88,7 +88,6 @@ const CartButton = () => {
       <Button
         label={`Cart (${cartItems.length})`}
         src="https://uxwing.com/wp-content/themes/uxwing/download/e-commerce-currency-shopping/shopping-cart-trolley-icon.png"
-        // onClick={navigate("/cart")}
       />
     </Link>
   );
