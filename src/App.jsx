@@ -19,7 +19,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import useOnline from "./hooks/useOnline";
 import Cart from "./pages/Cart";
 import { Provider } from "react-redux";
-import store from "../store/store";
+import store from "./store/store";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

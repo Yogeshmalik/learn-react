@@ -2,7 +2,7 @@ import RestaurantCard, { withVegLabel } from "../components/RestaurantCard";
 import { useContext, useEffect, useMemo, useState } from "react";
 import Shimmer from "../components/Shimmer";
 import { Link, NavLink, useParams } from "react-router";
-import { RESTAURANT_LIST_URL } from "../constants";
+import { RESTAURANT_LIST_URL } from "../utils/constants";
 import { filterInfo } from "../utils/helper";
 import useRestaurants from "../hooks/useRestaurants";
 import useOnline from "../hooks/useOnline";

@@ -1,8 +1,8 @@
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../utils/constants";
 import Button from "./Button";
 
 const CategoryItems = ({ category }) => {
-//   console.log("category CategoryItem", category);
+  //   console.log("category CategoryItem", category);
   return (
     <div>
       {category?.card?.card?.itemCards?.map((item) => (

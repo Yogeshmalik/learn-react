@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState, lazy } from "react";
 import { useParams } from "react-router";
-import { IMG_CDN_URL, RESTAURANT_DETAILS_URL } from "../constants";
-import NoImageFoundImg from "../assets/no-image-found.jpg";
+import { IMG_CDN_URL, RESTAURANT_DETAILS_URL } from "../utils/constants";
+import NoImageFoundImg from "../../public/assets/no-image-found.jpg";
 import Shimmer from "../components/Shimmer";
 import useRestaurantDetails from "../hooks/useRestaurantDetails";
 import useRestaurants from "../hooks/useRestaurants";
- import RestaurantCategory from "../components/RestaurantCategory";
+import RestaurantCategory from "../components/RestaurantCategory";
 
 const RestaurantPage = () => {
   const { restaurantId } = useParams();
@@ -59,7 +59,9 @@ const RestaurantPage = () => {
                   `}
                 >
                   <label className="no-underline">📍</label>
-                  <span className="underline">{restaurantInfo?.labels[1]?.message}</span>
+                  <span className="underline">
+                    {restaurantInfo?.labels[1]?.message}
+                  </span>
                 </span>
                 <span
                   onClick={handleAddress}
@@ -68,7 +70,9 @@ const RestaurantPage = () => {
                   `}
                 >
                   <label className="no-underline">📍</label>
-                 <span className="underline">{restaurantInfo?.locality}, {restaurantInfo?.areaName}</span>
+                  <span className="underline">
+                    {restaurantInfo?.locality}, {restaurantInfo?.areaName}
+                  </span>
                 </span>
               </div>
 

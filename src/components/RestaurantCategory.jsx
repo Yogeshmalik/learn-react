@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router";
 import useRestaurantDetails from "../hooks/useRestaurantDetails";
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../utils/constants";
 import Button from "./Button";
 import CategoryItems from "./CategoryItems";
 

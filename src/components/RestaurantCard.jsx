@@ -1,4 +1,4 @@
-import { IMG_CDN_URL } from "../constants";
+import { IMG_CDN_URL } from "../utils/constants";
 
 const RestaurantCard = ({
   name,
@@ -66,7 +66,8 @@ const RestaurantCard = ({
           <span className="font-semibold">{sla?.slaString}</span>
         </div>
         <p className="font-semibold text-gray-500 text-sm">
-          {cuisines?.slice(0, 3).join(", ") + (cuisines?.length > 3 ? "..." : "")}
+          {cuisines?.slice(0, 3).join(", ") +
+            (cuisines?.length > 3 ? "..." : "")}
         </p>
         <p className="font-semibold text-gray-500 text-sm">{areaName}</p>
       </div>

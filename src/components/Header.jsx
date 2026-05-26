@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from "react";
-import { TitleImg } from "../constants";
+import { TitleImg } from "../utils/constants";
 import { Link, useNavigate } from "react-router";
 import Button from "./Button";
 import Cart from "../pages/Cart";
 import useOnline from "../hooks/useOnline";
 import UserContext from "../providers/UserContext";
 import UserDropdownMenu from "./UserDropdownMenu";
+import { useSelector } from "react-redux";
 
 const Title = () => {
   return (
@@ -78,48 +79,14 @@ const NavItems = () => {
   );
 };
 
-// const LoginLogoutButtons = () => {
-//   const [isLoggedIn, setIsLoggedIn] = useState(true);
-//   const navigate = useNavigate();
-//   const data = useContext(UserContext);
-//   console.log("data-loginlogoutbtn", data);
-
-//   const handleLogout = () => {
-//     setIsLoggedIn(false);
-//     localStorage.removeItem("isAuth");
-//     navigate("/auth/login");
-//   };
-
-//   return (
-//     <div className="login-logout-buttons flex items-center">
-//       {isLoggedIn ? (
-//         <div className="mx-aut px-3 py-2">
-//           <Button
-//             onClick={handleLogout}
-//             label="Logout"
-//             size="small"
-//             color="red"
-//             src={"https://cdn-icons-png.flaticon.com/512/12635/12635060.png"}
-//           />
-//         </div>
-//       ) : (
-//         <Button
-//           onClick={() => {
-//             setIsLoggedIn(true);
-//           }}
-//           label="Login"
-//         />
-//       )}
-//     </div>
-//   );
-// };
-
 const CartButton = () => {
   const navigate = useNavigate();
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log("cartItems", cartItems);
   return (
     <Link to="/cart" className="flex items-center ">
       <Button
-        label="Cart"
+        label={`Cart (${cartItems.length})`}
         src="https://uxwing.com/wp-content/themes/uxwing/download/e-commerce-currency-shopping/shopping-cart-trolley-icon.png"
         // onClick={navigate("/cart")}
       />

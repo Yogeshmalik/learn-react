@@ -4,7 +4,7 @@
   "description": "React from scratch",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
+    "start": "parcel public/index.html",
     "build": "parcel build index.html"
   },
   "keywords": [],

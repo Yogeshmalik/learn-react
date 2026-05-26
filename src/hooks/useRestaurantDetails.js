@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router";
-import { IMG_CDN_URL, RESTAURANT_DETAILS_URL } from "../constants";
+import { IMG_CDN_URL, RESTAURANT_DETAILS_URL } from "../utils/constants";
 
 const useRestaurantDetails = (restaurantId) => {
   const [loading, setLoading] = useState(false);
@@ -26,7 +26,7 @@ const useRestaurantDetails = (restaurantId) => {
 
     const restaurantInfoData =
       restaurantDetailJson?.data?.cards[2]?.card?.card?.info;
-      // console.log('restaurantInfoData',restaurantInfoData)
+    // console.log('restaurantInfoData',restaurantInfoData)
 
     setRestaurantInfo(restaurantInfoData);
     setRestaurantDetail(restDetailArray);
