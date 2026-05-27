@@ -101,7 +101,7 @@ const App = () => {
             {/* } */}
             <Outlet />
             {/* {!hideLayout &&  */}
-            <Footer />
+            {/* <Footer /> */}
             {/* } */}
           </AuthLayout>
         </div>
