@@ -10,10 +10,8 @@ const ItemList = ({ itemCards, isCart }) => {
   };
 
   const handleRemoveItems = (item) => {
-    dispatch(removeItem(item));
+    dispatch(removeItem(item?.card?.info?.id));
   };
-
-  // const itemCards = categoryItem?.card?.card?.itemCards;
 
   return (
     <div>
@@ -157,13 +155,25 @@ const ItemList = ({ itemCards, isCart }) => {
                 />
               )}
               {isCart && (
-                <Button
-                  size="small"
-                  color="black"
-                  label="Remove Item"
-                  className="absolute bottom-2.5 md:bottom-1.5"
-                  onClick={() => handleRemoveItems(item)}
-                />
+                <div className="absolute min-w-18 justify-between  bg-black items-center rounded-md flex bottom-2.5 md:bottom-1.5">
+                  <Button
+                    size="small"
+                    color="black"
+                    label="-"
+                    className="min-w-5"
+                    onClick={() => handleRemoveItems(item)}
+                  />
+                  <span className="flex text-white font-semibold px-2">
+                    {item.quantity}
+                  </span>
+                  <Button
+                    size="small"
+                    color="black"
+                    label="+"
+                    className="min-w-5"
+                    onClick={() => handleAddItems(item)}
+                  />
+                </div>
               )}
             </div>
           </ul>
