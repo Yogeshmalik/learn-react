@@ -18,13 +18,13 @@ const Cart = () => {
 
   return (
     <div className="flex flex-col gap-4 p-2 max-w-7xl w-full mx-auto items-center overflow-auto">
-      <div className="flex md:flex-col gap-2 items-center">
-        <h1 className="flex text-xl md:text-3xl uppercase font-semibold text-orange-600 items-center mx-auto">
-          {firstName}'s Cart
+      <div className="flex flex-col gap-2 items-center">
+        <h1 className="flex text-xl md:text-3xl uppercase font-semibold text-orange-400 items-center mx-auto">
+          {firstName}'s Cart ({cartItems.length} Items)
         </h1>
         <Button label="Clear Cart" onClick={handleClearCart} color="red" />
       </div>
-      <div className="flex flex-col max-w-[50%] pb-10">
+      <div className="flex flex-col md:max-w-[50%] pb-10">
         <ItemList isCart={true} itemCards={cartItems} />
       </div>
     </div>
