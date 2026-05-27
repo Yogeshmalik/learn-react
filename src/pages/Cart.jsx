@@ -24,7 +24,9 @@ const Cart = () => {
         </h1>
         <Button label="Clear Cart" onClick={handleClearCart} color="red" />
       </div>
-      <ItemList itemCards={cartItems} />
+      <div className="flex flex-col max-w-[50%] pb-10">
+        <ItemList isCart={true} itemCards={cartItems} />
+      </div>
     </div>
   );
 };

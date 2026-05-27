@@ -1,12 +1,16 @@
 import { useDispatch } from "react-redux";
 import { IMG_CDN_URL } from "../utils/constants";
 import Button from "./Button";
-import { addItem } from "../store/cartSlice";
+import { addItem, removeItem } from "../store/cartSlice";
 
-const ItemList = ({ itemCards }) => {
+const ItemList = ({ itemCards, isCart }) => {
   const dispatch = useDispatch();
   const handleAddItems = (item) => {
     dispatch(addItem(item));
+  };
+
+  const handleRemoveItems = (item) => {
+    dispatch(removeItem(item));
   };
 
   // const itemCards = categoryItem?.card?.card?.itemCards;
@@ -123,7 +127,7 @@ const ItemList = ({ itemCards }) => {
                   </span>
                 )}
               </div>
-              {item?.card?.info?.description && (
+              {item?.card?.info?.description && !isCart && (
                 <span className="flex py-4 text-gray-700">
                   {item?.card?.info?.description}
                 </span>
@@ -143,13 +147,24 @@ const ItemList = ({ itemCards }) => {
                   className="flex self-center w-full h-full max-h-24 max-w-16 md:max-h-28 ml-auto md:max-w-42 object-cover rounded-xl shadow-lg hover:shadow-violet-400 transition-all ease-in-out duration-300 hover:scale-125"
                 />
               )}
-              <Button
-                size="small"
-                color="black"
-                label="Add+"
-                className="absolute bottom-2.5 md:bottom-1.5"
-                onClick={() => handleAddItems(item)}
-              />
+              {!isCart && (
+                <Button
+                  size="small"
+                  color="black"
+                  label="Add+"
+                  className="absolute bottom-2.5 md:bottom-1.5"
+                  onClick={() => handleAddItems(item)}
+                />
+              )}
+              {isCart && (
+                <Button
+                  size="small"
+                  color="black"
+                  label="Remove Item"
+                  className="absolute bottom-2.5 md:bottom-1.5"
+                  onClick={() => handleRemoveItems(item)}
+                />
+              )}
             </div>
           </ul>
         </span>
